@@ -1,10 +1,10 @@
-from flask import Flask
+import os
+from taskmanager import app
 
-app = Flask(__name__)
-
-@app.route("/")
-def home():
-    return "Hello Flask is working"
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(
+        host=os.environ.get("IP"),
+        port=int(os.environ.get("PORT")),
+        debug=os.environ.get("DEBUG")
+    )
